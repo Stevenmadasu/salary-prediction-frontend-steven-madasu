@@ -8,130 +8,175 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YcnS/1nDaVac2i44F3mb5Y5e0g/QHniU15kR" crossorigin="anonymous">
     <style>
+        :root {
+            --navy: #1b2a4a;
+            --navy-light: #243556;
+            --blue-mid: #3a5a8c;
+            --grey-50: #f8f9fa;
+            --grey-100: #f1f3f5;
+            --grey-200: #e2e6ea;
+            --grey-400: #adb5bd;
+            --grey-600: #6c757d;
+            --grey-800: #343a40;
+            --white: #ffffff;
+        }
+
+        * { box-sizing: border-box; }
+
         body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            background: var(--grey-100);
             min-height: 100vh;
             font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            color: var(--grey-800);
+            display: flex;
+            flex-direction: column;
         }
-        .hero-header {
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding: 1rem 0;
-            margin-bottom: 2rem;
+
+        /* ── Header ── */
+        .site-header {
+            background: var(--navy);
+            padding: 1.1rem 0;
         }
-        .hero-header h1 {
-            color: #fff;
+        .site-header h1 {
+            color: var(--white);
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             margin: 0;
+            letter-spacing: 0.3px;
         }
-        .hero-header .subtitle {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.85rem;
-            margin: 0;
+        .site-header .subtitle {
+            color: var(--grey-400);
+            font-size: 0.82rem;
+            margin: 0.15rem 0 0 0;
         }
+
+        /* ── Main content ── */
+        main {
+            flex: 1;
+            padding: 2.5rem 0;
+        }
+
+        /* ── Card ── */
         .main-card {
-            background: rgba(255,255,255,0.95);
-            border: none;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            background: var(--white);
+            border: 1px solid var(--grey-200);
+            border-radius: 10px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
         }
         .main-card .card-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 16px 16px 0 0 !important;
+            background: var(--navy);
             border: none;
-            padding: 1.5rem 2rem;
+            border-radius: 0 !important;
+            padding: 1.25rem 1.75rem;
         }
         .main-card .card-header h2 {
-            color: #fff;
-            font-weight: 700;
-            font-size: 1.35rem;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 1.15rem;
             margin: 0;
         }
         .main-card .card-header p {
-            color: rgba(255,255,255,0.8);
-            margin: 0.25rem 0 0 0;
-            font-size: 0.9rem;
+            color: var(--grey-400);
+            margin: 0.2rem 0 0 0;
+            font-size: 0.85rem;
         }
         .main-card .card-body {
-            padding: 2rem;
+            padding: 1.75rem;
         }
+
+        /* ── Form ── */
         .form-label {
             font-weight: 600;
-            color: #2c3e50;
-            font-size: 0.9rem;
-            margin-bottom: 0.35rem;
+            color: var(--navy);
+            font-size: 0.85rem;
+            margin-bottom: 0.3rem;
         }
         .form-select {
-            border-radius: 8px;
-            border: 2px solid #e0e5ec;
-            padding: 0.6rem 0.75rem;
+            border: 1px solid var(--grey-200);
+            border-radius: 6px;
+            padding: 0.55rem 0.75rem;
             font-size: 0.9rem;
+            color: var(--grey-800);
+            background-color: var(--white);
             transition: border-color 0.2s, box-shadow 0.2s;
         }
         .form-select:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+            border-color: var(--blue-mid);
+            box-shadow: 0 0 0 3px rgba(58, 90, 140, 0.15);
         }
+
+        /* ── Button ── */
         .btn-predict {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: var(--navy);
             border: none;
-            border-radius: 10px;
-            padding: 0.75rem 2.5rem;
+            border-radius: 6px;
+            padding: 0.65rem 2.25rem;
             font-weight: 600;
-            font-size: 1.05rem;
-            color: #fff;
-            transition: transform 0.15s, box-shadow 0.15s;
+            font-size: 0.95rem;
+            color: var(--white);
+            transition: background 0.2s, box-shadow 0.2s;
         }
         .btn-predict:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-            color: #fff;
+            background: var(--navy-light);
+            box-shadow: 0 4px 14px rgba(27, 42, 74, 0.25);
+            color: var(--white);
         }
+        .btn-predict:active {
+            background: var(--blue-mid);
+        }
+
+        /* ── Result ── */
         .result-card {
-            background: linear-gradient(135deg, #11998e, #38ef7d);
-            border: none;
-            border-radius: 12px;
-            color: #fff;
-            padding: 1.5rem 2rem;
+            background: var(--navy);
+            border-radius: 8px;
+            color: var(--white);
+            padding: 1.25rem 1.5rem;
             margin-top: 1.5rem;
         }
         .result-card .result-label {
-            font-size: 0.9rem;
-            opacity: 0.9;
-            margin-bottom: 0.25rem;
+            font-size: 0.82rem;
+            color: var(--grey-400);
+            margin-bottom: 0.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .result-card .result-value {
-            font-size: 2.25rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white);
         }
         .result-error {
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            background: #c0392b;
         }
+
+        /* ── Footer ── */
         footer {
-            color: rgba(255,255,255,0.4);
-            font-size: 0.8rem;
-            padding: 2rem 0;
+            background: var(--grey-50);
+            border-top: 1px solid var(--grey-200);
+            color: var(--grey-600);
+            font-size: 0.78rem;
+            padding: 1.25rem 0;
             text-align: center;
         }
     </style>
 </head>
 <body>
     <!-- Header -->
-    <div class="hero-header">
+    <header class="site-header">
         <div class="container">
-            <h1>💰 Salary Prediction Tool</h1>
-            <p class="subtitle">Welcome Steven Madasu — BAIS:3300 Digital Product Development</p>
+            <h1>Salary Prediction</h1>
+            <p class="subtitle">Steven Madasu — BAIS:3300 Digital Product Development</p>
         </div>
-    </div>
+    </header>
 
-    {% block content %}{% endblock %}
+    <main>
+        {% block content %}{% endblock %}
+    </main>
 
     <footer>
         <div class="container">
-            Steven Madasu &bull; BAIS:3300 &bull; Salary Prediction Front End
+            Steven Madasu &middot; BAIS:3300 &middot; Salary Prediction Front End
         </div>
     </footer>
 

@@ -7,12 +7,12 @@
             <div class="card main-card">
                 <div class="card-header">
                     <h2>Predict Your Salary</h2>
-                    <p>Fill in all fields below and click predict</p>
+                    <p>Fill in all fields below to get an estimate</p>
                 </div>
                 <div class="card-body">
                     <form action="/predict" method="POST">
 
-                        <!-- Row 1: Age + Gender -->
+                        <!-- Age + Gender -->
                         <div class="row mb-3">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <label for="age" class="form-label">Age Range</label>
@@ -44,7 +44,7 @@
                             </div>
                         </div>
 
-                        <!-- Row 2: Country -->
+                        <!-- Country -->
                         <div class="mb-3">
                             <label for="country" class="form-label">Country</label>
                             <select class="form-select" id="country" name="country" required>
@@ -110,7 +110,7 @@
                             </select>
                         </div>
 
-                        <!-- Row 3: Highest Degree + Coding Experience -->
+                        <!-- Highest Degree + Coding Experience -->
                         <div class="row mb-3">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <label for="highest_deg" class="form-label">Highest Degree</label>
@@ -140,7 +140,7 @@
                             </div>
                         </div>
 
-                        <!-- Row 4: Title + Company Size -->
+                        <!-- Title + Company Size -->
                         <div class="row mb-4">
                             <div class="col-md-6 mb-3 mb-md-0">
                                 <label for="title" class="form-label">Current Title</label>
@@ -177,8 +177,8 @@
 
                         <!-- Submit -->
                         <div class="text-center">
-                            <button type="submit" class="btn btn-predict btn-lg">
-                                🔮 Predict Salary
+                            <button type="submit" class="btn btn-predict">
+                                Predict Salary
                             </button>
                         </div>
                     </form>
@@ -188,7 +188,7 @@
                     <div class="result-card {{ 'result-error' if 'Error' in prediction else '' }}">
                         {% if 'Error' in prediction %}
                         <div class="result-label">Something went wrong</div>
-                        <div class="result-value" style="font-size:1.25rem">{{ prediction }}</div>
+                        <div class="result-value" style="font-size:1.15rem">{{ prediction }}</div>
                         {% else %}
                         <div class="result-label">Estimated Annual Salary</div>
                         <div class="result-value">{{ prediction }}</div>
